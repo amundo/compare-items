@@ -1,0 +1,89 @@
+@layer demo.component {
+  compare-items {
+    --pos: 50%;
+    display: inline-grid;
+    aspect-ratio: 1;
+    place-content: center;
+    position: relative;
+  }
+
+  compare-items>* {
+    grid-area: 1 / 1;
+  }
+
+  compare-items>* {
+    border: hsl(0 0% 0% / 0.5) solid;
+  }
+
+  compare-items :nth-child(1) {
+    -webkit-mask: linear-gradient(to right, #000 0, var(--pos, 50%), rgba(0, 0, 0, 0) 0);
+    mask: linear-gradient(to right, #000 0, var(--pos, 50%), rgba(0, 0, 0, 0) 0);
+  }
+
+  compare-items :nth-child(2) {
+    -webkit-mask: linear-gradient(to right, rgba(0, 0, 0, 0) 0, var(--pos, 50%), #000 0);
+    mask: linear-gradient(to right, rgba(0, 0, 0, 0) 0, var(--pos, 50%), #000 0);
+  }
+
+  compare-items input[type=range] {
+    z-index: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent
+  }
+
+  compare-items input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    inline-size: 4px;
+    block-size: 100%;
+    background-color: CanvasText;
+  }
+
+  compare-items input[type=range]::-moz-range-thumb {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    inline-size: 4px;
+    block-size: 100%;
+    background-color: CanvasText;
+  }
+
+  img {
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: contain;
+  }
+}
+
+@layer demo.support {
+  * {
+    box-sizing: border-box;
+    margin: 0
+  }
+
+  html {
+    block-size: 100%;
+    color-scheme: dark light
+  }
+
+  body {
+    min-block-size: 100%;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    display: grid
+  }
+
+  img {
+    /* max-block-size:80dvh; */
+    max-inline-size: 100%
+  }
+}
+
+html,
+body {
+  block-size: 100dvh;
+}
